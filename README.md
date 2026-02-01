@@ -80,18 +80,15 @@ npm install
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=sisfo_workshop
+   DB_DATABASE=sisfo_decode
    DB_USERNAME=root
-   DB_PASSWORD=
-   ```
-
+   
 ### Langkah 5: Buat Database
 
-Buat database baru di MySQL/MariaDB dengan nama sesuai yang Anda set di `.env` (contoh: `sisfo_workshop`):
+Buat database baru di PhpMyAdmin dengan nama sesuai yang Anda set di `.env` (contoh: `sisfo_decode`):
 
 ```sql
-CREATE DATABASE sisfo_workshop;
-```
+CREATE DATABASE sisfo_decode;
 
 ### Langkah 6: Jalankan Migration
 
