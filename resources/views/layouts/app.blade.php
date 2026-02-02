@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Sistem Informasi Mahasiswa')</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ asset('assets/img/logo.jpg') }}">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -172,8 +175,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <i class="bi bi-mortarboard-fill me-2"></i>
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ asset('assets/img/logo.jpg') }}" alt="Logo" width="40" height="40" class="rounded-circle me-2">
                 Sisfo Decode
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -261,18 +264,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer mt-5">
-        <div class="container text-center">
-            <p class="mb-0">
-                <i class="bi bi-code-slash"></i> 
-                Sisfo Decode 2026
-            </p>
-            <p class="mb-0 mt-2 text-muted">
-                <small>Built with <i class="bi bi-heart-fill text-danger"></i> using Laravel & Bootstrap</small>
-            </p>
-        </div>
-    </footer>
 
     <!-- Bootstrap JS Bundle (includes Popper) -->  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
