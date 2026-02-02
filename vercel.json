@@ -1,9 +1,9 @@
 {
     "version": 2,
-    "framework": null,
+    "framework": "other",
     "functions": {
         "api/index.php": {
-            "runtime": "vercel-php"
+            "runtime": "vercel-php@0.1.0"
         }
     },
     "routes": [
@@ -27,7 +27,6 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "https://sisfo-decode.vercel.app",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
