@@ -4,7 +4,7 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "bash scripts/deploy.sh && apache2-foreground",
+        "startCommand": "bash scripts/deploy.sh && php artisan serve --host=0.0.0.0 --port=$PORT",
         "numReplicas": 1,
         "sleepApplication": false,
         "restartPolicyType": "ON_FAILURE"
