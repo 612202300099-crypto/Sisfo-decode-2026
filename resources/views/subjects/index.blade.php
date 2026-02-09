@@ -1,63 +1,67 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Mata Kuliah')
+@section('title', 'Manajemen Mata Kuliah')
 
 @section('content')
-    <div class="page-header">
-        <h1>
-            <i class="bi bi-journal-bookmark-fill me-2"></i>
-            Daftar Mata Kuliah
-        </h1>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <h1 class="fw-800 mb-0">Mata Kuliah</h1>
+            <p class="text-muted mb-0">Kelola daftar mata kuliah per program studi.</p>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+            <div class="dropdown d-inline-block me-2">
+                <button class="btn btn-outline-dark rounded-pill px-4" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-file-earmark-arrow-down me-2"></i>Ekspor/Impor
+                </button>
+                <ul class="dropdown-menu shadow-lg border-0 rounded-4">
+                    <li><a class="dropdown-item py-2" href="{{ route('import-export.template', 'subjects') }}"><i class="bi bi-file-earmark-spreadsheet me-2 text-success"></i>Unduh Template</a></li>
+                    <li><a class="dropdown-item py-2" href="{{ route('import-export.export', 'subjects') }}"><i class="bi bi-download me-2 text-primary"></i>Ekspor CSV</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#importModal"><i class="bi bi-upload me-2 text-warning"></i>Impor Data</a></li>
+                </ul>
+            </div>
+            <a href="{{ route('subjects.create') }}" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                <i class="bi bi-plus-lg me-2"></i>Tambah MK
+            </a>
+        </div>
     </div>
 
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span><i class="bi bi-table me-2"></i>Data Mata Kuliah</span>
-            <div class="d-flex gap-2">
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-file-earmark-arrow-down me-1"></i>Ekspor/Impor
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('import-export.template', 'subjects') }}"><i class="bi bi-file-earmark-excel me-2"></i>Unduh Template</a></li>
-                        <li><a class="dropdown-item" href="{{ route('import-export.export', 'subjects') }}"><i class="bi bi-download me-2"></i>Ekspor Data (CSV)</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#importModal"><i class="bi bi-upload me-2"></i>Impor Data</a></li>
-                    </ul>
-                </div>
-                <a href="{{ route('subjects.create') }}" class="btn btn-primary btn-sm">
-                    <i class="bi bi-plus-circle me-1"></i>Tambah Mata Kuliah
-                </a>
-            </div>
-        </div>
-        <div class="card-body">
-            @if($subjects->count() > 0)
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle">
-                        <thead>
+    <div class="card border-0 shadow-sm overflow-hidden">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-muted small text-uppercase fw-bold">
+                        <tr>
+                            <th class="ps-4 py-3" style="width: 80px">No</th>
+                            <th class="py-3">Informasi MK</th>
+                            <th class="py-3">Program Studi</th>
+                            <th class="py-3 text-end pe-4">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($subjects as $index => $subject)
                             <tr>
-                                <th style="width: 5%">No</th>
-                                <th style="width: 15%">Kode MK</th>
-                                <th style="width: 30%">Nama Mata Kuliah</th>
-                                <th style="width: 25%">Program Studi</th>
-                                <th style="width: 25%" class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($subjects as $index => $subject)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>
-                                        <span class="badge bg-dark">{{ $subject->code }}</span>
-                                    </td>
-                                    <td>{{ $subject->name }}</td>
-                                    <td>
-                                        <span class="badge bg-info">{{ $subject->studyProgram->name }}</span>
-                                    </td>
-                                    <td class="text-center">
+                                <td class="ps-4">
+                                    <span class="text-muted fw-medium small">{{ $index + 1 }}</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-secondary bg-opacity-10 text-secondary rounded-3 d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px; font-weight: 700; font-size: 0.8rem;">
+                                            {{ $subject->code }}
+                                        </div>
+                                        <div class="fw-bold text-dark">{{ $subject->name }}</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-soft-brand text-brand border border-primary border-opacity-10 rounded-pill px-3">
+                                        {{ $subject->studyProgram->name }}
+                                    </span>
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="d-inline-flex gap-2">
                                         <a href="{{ route('subjects.edit', $subject) }}" 
-                                           class="btn btn-warning btn-sm">
-                                            <i class="bi bi-pencil-square me-1"></i>Edit
+                                           class="btn btn-sm btn-light rounded-pill px-3" title="Edit">
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                         
                                         <form id="delete-form-{{ $subject->id }}" 
@@ -68,23 +72,24 @@
                                             @method('DELETE')
                                             <button type="button" 
                                                     onclick="confirmDelete('delete-form-{{ $subject->id }}')" 
-                                                    class="btn btn-danger btn-sm">
-                                                <i class="bi bi-trash me-1"></i>Hapus
+                                                    class="btn btn-sm btn-outline-danger rounded-pill px-3" title="Hapus">
+                                                <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
-                <div class="alert alert-info mb-0">
-                    <i class="bi bi-info-circle me-2"></i>
-                    Belum ada data mata kuliah. 
-                    <a href="{{ route('subjects.create') }}" class="alert-link">Tambah data</a> sekarang.
-                </div>
-            @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="py-5 text-center text-muted">
+                                    <i class="bi bi-inbox fs-1 d-block mb-3 opacity-25"></i>
+                                    Belum ada data mata kuliah tersedia.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
@@ -92,29 +97,46 @@
 @section('scripts')
     <!-- Import Modal -->
     <div class="modal fade" id="importModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
                 <form action="{{ route('import-export.import', 'subjects') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title"><i class="bi bi-upload me-2"></i>Impor Data Mata Kuliah</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold">Impor Mata Kuliah</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info small">
-                            <i class="bi bi-info-circle me-1"></i> Gunakan template CSV yang sudah disediakan untuk memastikan format data benar.
+                    <div class="modal-body py-4">
+                        <div class="bg-info bg-opacity-10 text-info p-3 rounded-4 mb-4 small d-flex">
+                            <i class="bi bi-info-circle-fill me-3 fs-4"></i>
+                            <div>Gunakan template CSV resmi. Pastikan kode MK unik dan Prodi sudah terdaftar.</div>
                         </div>
-                        <div class="mb-3">
-                            <label for="file" class="form-label">Pilih File CSV</label>
-                            <input type="file" name="file" class="form-control" accept=".csv" required>
+                        <div class="mb-0">
+                            <label for="file" class="form-label fw-bold small">Pilih File CSV</label>
+                            <input type="file" name="file" class="form-control rounded-3" accept=".csv" required>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Mulai Impor</button>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">Mulai Impor</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+@section('styles')
+<style>
+    .fw-800 { font-weight: 800; }
+    .bg-soft-brand { background-color: rgba(41, 22, 111, 0.05); }
+    .text-brand { color: var(--brand-navy); }
+    
+    [data-bs-theme="dark"] .bg-soft-brand { background-color: rgba(255, 245, 0, 0.05); }
+    [data-bs-theme="dark"] .text-brand { color: var(--brand-yellow); }
+    [data-bs-theme="dark"] .table tbody td { border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+    .table thead th { border-bottom: none; }
+    .table tbody td { border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .table tbody tr:last-child td { border-bottom: none; }
+</style>
 @endsection

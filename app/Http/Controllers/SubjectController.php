@@ -4,97 +4,66 @@ namespace App\Http\Controllers;
 
 use App\Models\Subject;
 use App\Models\StudyProgram;
-use Illuminate\Http\Request;
+use App\Http\Requests\SubjectRequest;
+use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $subjects = Subject::with('studyProgram')->latest()->get();
         return view('subjects.index', compact('subjects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $studyPrograms = StudyProgram::orderBy('name')->get();
         return view('subjects.create', compact('studyPrograms'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(SubjectRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'code' => 'required|string|max:20',
-            'study_program_id' => 'required|exists:study_programs,id',
-        ], [
-            'name.required' => 'Nama mata kuliah wajib diisi.',
-            'code.required' => 'Kode mata kuliah wajib diisi.',
-            'study_program_id.required' => 'Program studi wajib dipilih.',
-            'study_program_id.exists' => 'Program studi tidak valid.',
-        ]);
+        try {
+            DB::transaction(function () use ($request) {
+                Subject::create($request->validated());
+            });
 
-        Subject::create($validated);
-
-        return redirect()->route('subjects.index')
-            ->with('success', 'Mata Kuliah berhasil ditambahkan.');
+            return redirect()->route('subjects.index')
+                ->with('success', 'Mata Kuliah berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            return back()->withInput()->with('error', 'Gagal menyimpan: ' . $e->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Subject $subject)
-    {
-        return redirect()->route('subjects.index');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Subject $subject)
     {
         $studyPrograms = StudyProgram::orderBy('name')->get();
         return view('subjects.edit', compact('subject', 'studyPrograms'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Subject $subject)
+    public function update(SubjectRequest $request, Subject $subject)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'code' => 'required|string|max:20',
-            'study_program_id' => 'required|exists:study_programs,id',
-        ], [
-            'name.required' => 'Nama mata kuliah wajib diisi.',
-            'code.required' => 'Kode mata kuliah wajib diisi.',
-            'study_program_id.required' => 'Program studi wajib dipilih.',
-            'study_program_id.exists' => 'Program studi tidak valid.',
-        ]);
+        try {
+            DB::transaction(function () use ($request, $subject) {
+                $subject->update($request->validated());
+            });
 
-        $subject->update($validated);
-
-        return redirect()->route('subjects.index')
-            ->with('success', 'Mata Kuliah berhasil diperbarui.');
+            return redirect()->route('subjects.index')
+                ->with('success', 'Mata Kuliah berhasil diperbarui.');
+        } catch (\Exception $e) {
+            return back()->withInput()->with('error', 'Gagal memperbarui: ' . $e->getMessage());
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Subject $subject)
     {
-        $subject->delete();
-
-        return redirect()->route('subjects.index')
-            ->with('success', 'Mata Kuliah berhasil dihapus.');
+        try {
+            $subject->delete();
+            return redirect()->route('subjects.index')
+                ->with('success', 'Mata Kuliah dipindahkan ke tempat sampah.');
+        } catch (\Exception $e) {
+            return redirect()->route('subjects.index')
+                ->with('error', 'Gagal menghapus: ' . $e->getMessage());
+        }
     }
 }

@@ -8,17 +8,26 @@ use App\Models\StudyProgram;
 use App\Models\Student;
 use App\Models\Subject;
 
-Route::get('/', function () {
-    $studyProgramCount = StudyProgram::count();
-    $studentCount = Student::count();
-    $subjectCount = Subject::count();
-    
-    return view('pages.home', compact('studyProgramCount', 'studentCount', 'subjectCount'));
+use App\Services\SystemDataService;
+
+Route::get('/', function (SystemDataService $dataService) {
+    $stats = $dataService->getDashboardStats();
+    return view('pages.home', compact('stats'));
 })->name('home');
 
 Route::resource('study-programs', StudyProgramController::class);
 Route::resource('students', StudentController::class);
 Route::resource('subjects', SubjectController::class);
+
+// Search Route
+use App\Http\Controllers\SearchController;
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+// Trash Routes
+use App\Http\Controllers\TrashController;
+Route::get('/trash', [TrashController::class, 'index'])->name('trash.index');
+Route::post('/trash/restore/{type}/{id}', [TrashController::class, 'restore'])->name('trash.restore');
+Route::delete('/trash/force-delete/{type}/{id}', [TrashController::class, 'forceDelete'])->name('trash.force-delete');
 
 // Import & Export Routes
 use App\Http\Controllers\ImportExportController;
