@@ -2,9 +2,11 @@
 
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com)
-[![Udinus](https://img.shields.io/badge/Udinus-Kediri-blue)](https://dinus.ac.id)
+[![Railway](https://img.shields.io/badge/Live_Demo-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://sisfo-decode-2026-production.up.railway.app/)
 
 **Sisfo Decode Bootcamp 2026** adalah proyek implementasi sistem informasi akademik yang dikembangkan dalam rangka mempersiapkan mahasiswa Sistem Informasi Kampus Kota Kediri menghadapi semester genap. Proyek ini memfokuskan pada penguasaan CRUD (*Create, Read, Update, Delete*), manajemen basis data, dan perancangan antarmuka pengguna (UI/UX) yang modern dan fungsional.
+
+🌐 **Link Demo Live**: [https://sisfo-decode-2026-production.up.railway.app/](https://sisfo-decode-2026-production.up.railway.app/)
 
 ---
 
@@ -95,4 +97,4 @@ Bagi rekan-rekan mahasiswa yang ingin mencoba menjalankan proyek ini di lokal:
 ## 📝 Penutup
 Proyek ini diharapkan dapat menjadi tolak ukur pemahaman materi bootcamp bagi mahasiswa Sistem Informasi Udinus Kediri. Mari kita terus belajar dan berinovasi!
 
-**Dibuat dengan ❤️ di Lab. Komputer Udinus Kediri.**
+**Dibuat dengan Hati yang Tulus oleh Mochammad Rizky Juliansyah - F12202300099 - Sistem Informasi Udinus Kediri.**
