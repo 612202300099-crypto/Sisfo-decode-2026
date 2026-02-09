@@ -1,114 +1,98 @@
-# 🎓 Sisfo Decode 2026 — Modern Academic Information System
+# 🎓 Sisfo Decode Bootcamp 2026 — Modern Academic Information System
 
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com)
-[![Railway](https://img.shields.io/badge/Deployed_on-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app)
+[![Udinus](https://img.shields.io/badge/Udinus-Kediri-blue)](https://dinus.ac.id)
 
-**Sisfo Decode 2026** adalah platform manajemen akademik modern yang dirancang untuk memberikan pengalaman pengelolaan data mahasiswa, program studi, dan mata kuliah yang efisien, aman, dan memanjakan mata. Dibangun dengan fokus pada estetika dan kemudahan penggunaan (UX), sistem ini menggabungkan kekuatan Laravel dengan desain UI premium.
-
----
-
-## ✨ Fitur Unggulan
-
-### 🌗 Premium Adaptive Theme
-Sistem ini mendukung **Dark Mode** dan **Light Mode** secara cerdas dengan *Semantic Color Tokens*. Tidak hanya sekadar merubah warna, tapi memberikan kenyamanan visual (eye-care) baik di siang maupun malam hari.
-
-### 🔍 Global Search Engine
-Temukan data mahasiswa atau mata kuliah secepat kilat melalui fitur pencarian global di navbar. Dilengkapi dengan saran instan (*instant suggestions*) yang memproses data secara *real-time*.
-
-### 📊 Interactive Dashboard
-Pantau statistik akademik Anda melalui dashboard yang dinamis. Dilengkapi dengan grafik interaktif dari **ApexCharts** yang secara otomatis menyesuaikan warna dengan tema yang Anda pilih.
-
-### ♻️ Safe Data Management (Trash System)
-Jangan takut kehilangan data! Kami mengimplementasikan sistem **Soft Delete**. Data yang dihapus akan masuk ke **Tempat Sampah** (Trash) terlebih dahulu, memungkinkan Anda untuk memulihkan (*restore*) atau menghapus permanen nantinya.
-
-### 📥 Import & Export Tools
-Kelola data massal dengan mudah. Anda dapat mengekspor data ke format CSV atau melakukan impor data menggunakan template resmi yang disediakan oleh sistem.
+**Sisfo Decode Bootcamp 2026** adalah proyek implementasi sistem informasi akademik yang dikembangkan dalam rangka mempersiapkan mahasiswa Sistem Informasi Kampus Kota Kediri menghadapi semester genap. Proyek ini memfokuskan pada penguasaan CRUD (*Create, Read, Update, Delete*), manajemen basis data, dan perancangan antarmuka pengguna (UI/UX) yang modern dan fungsional.
 
 ---
 
-## 🖼️ Tampilan Aplikasi
+## 🌟 Tentang Kegiatan
+Proyek ini merupakan bagian dari **Sisfo Decode Bootcamp**, sebuah inisiatif dari Biro Sistem Informasi x Program Studi Sistem Informasi Udinus Kediri untuk membekali mahasiswa angkatan 2023, 2024, dan 2025 dengan keterampilan praktis dalam pengembangan web menggunakan Laravel.
 
-| Dashboard (Light Mode) | Dashboard (Dark Mode) |
+- **Materi**: CRUD Kompleks & UI/UX Premium
+- **Lokasi**: Lab. Komputer Udinus Kediri
+- **Tujuan**: Mempersiapkan bekal teknis untuk mata kuliah di semester mendatang.
+
+---
+
+## ✨ Fitur Utama Sistem
+Aplikasi ini dirancang bukan hanya sebagai CRUD biasa, melainkan sebuah sistem yang siap untuk skala produksi:
+
+### 🌗 Adaptive Theme (Dark/Light Mode)
+Transisi tema yang halus antara mode terang dan gelap untuk kenyamanan mata pengguna di berbagai kondisi pencahayaan.
+
+### 🔍 Smart Global Search
+Fitur pencarian di navbar yang memudahkan admin menemukan data Mahasiswa atau Mata Kuliah secara instan dengan hasil yang akurat.
+
+### 📊 Dashboard Dinamis
+Visualisasi data statistik mahasiswa dan program studi menggunakan **ApexCharts**, membantu pengambilan keputusan akademik secara lebih cepat.
+
+### ♻️ Trash System (Safety First)
+Perlindungan data menggunakan fitur *Soft Delete*. Data yang dihapus tidak langsung hilang permanen, melainkan aman disimpan di menu "Sampah" untuk bisa dipulihkan kembali jika diperlukan.
+
+### 📥 Data Import & Export
+Mendukung pengelolaan data massal melalui fitur ekspor ke CSV dan impor data langsung menggunakan template yang telah disediakan.
+
+---
+
+## 🖼️ Galeri Antarmuka
+
+| Dashboard Utama (Mode Terang) | Dashboard Utama (Mode Gelap) |
 | :---: | :---: |
 | ![Dashboard Light](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/light_dashboard.jpg) | ![Dashboard Dark](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/dark_dashboard.jpg) |
-| *Ringkasan statistik akademik yang cerah* | *Visualisasi data yang elegan dan premium* |
+| *Statistik akademik dengan tampilan bersih* | *Opsi mode gelap yang elegan dan profesional* |
 
-| Menu Mahasiswa | Fitur Tempat Sampah |
+| Daftar Mahasiswa | Fitur Tempat Sampah |
 | :---: | :---: |
 | ![Student Index](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/student_index.jpg) | ![Trash System](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/trash_system.jpg) |
-| *Pengelolaan profil mahasiswa yang rapi* | *Keamanan data dengan sistem restorasi* |
+| *Tabel data yang rapi dan fungsional* | *Keamanan data dengan sistem restorasi* |
 
-| Menu Program Studi | Menu Mata Kuliah |
+| Program Studi | Daftar Mata Kuliah |
 | :---: | :---: |
 | ![Prodi Index](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/prodi_index.jpg) | ![Subject Index](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/subject_index.jpg) |
-| *Manajemen kurikulum & program studi* | *Daftar mata kuliah pendukung akademik* |
+| *Manajemen kurikulum prodi* | *Daftar mata kuliah akademik* |
 
-| Form Tambah Data (Premium UI) | Form Edit Data |
+| Form Input Premium | Form Edit Data |
 | :---: | :---: |
 | ![Create Form](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/create_form.jpg) | ![Edit Form](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/edit_form.jpg) |
-| *Antarmuka penginputan yang bersih & modern* | *Kemudahan pembaruan data secara realtime* |
-
-*(Note: Silakan unggah foto screenshot ke folder `public/assets/img/screenshots/` dengan nama file di atas agar muncul di GitHub)*
+| *UI yang memanjakan mata saat manajemen data* | *Kemudahan pembaruan informasi* |
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
-
-- **Backend**: [Laravel 11](https://laravel.com) (PHP 8.2+)
-- **Frontend**: [Bootstrap 5.3](https://getbootstrap.com), Vanilla JS
-- **Visualisasi**: [ApexCharts](https://apexcharts.com)
-- **Database**: MySQL / PostgreSQL
-- **Deployment**: [Railway](https://railway.app)
+## 🛠️ Stack Teknologi
+- **Core**: Laravel 11 (PHP 8.2+)
+- **UI/UX**: Bootstrap 5.3 & Vanilla JavaScript
+- **Charting**: ApexCharts JS
+- **Deployment**: Railway.app
 
 ---
 
 ## 🚀 Cara Menjalankan Project
+Bagi rekan-rekan mahasiswa yang ingin mencoba menjalankan proyek ini di lokal:
 
-### 1. Persiapan
-Clone repository ini dan masuk ke direktori project:
-```bash
-git clone https://github.com/612202300099-crypto/Sisfo-decode-2026.git
-cd Sisfo-decode-2026
-```
-
-### 2. Instalasi
-Instal dependensi PHP dan Node.js:
-```bash
-composer install
-npm install
-```
-
-### 3. Konfigurasi
-Copy file `.env.example` menjadi `.env` dan sesuaikan pengaturan database Anda:
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-### 4. Database Setup
-Jalankan migrasi untuk membuat tabel dan struktur yang diperlukan:
-```bash
-php artisan migrate
-```
-
-### 5. Jalankan Aplikasi
-Jalankan server lokal:
-```bash
-php artisan serve
-```
-Akses aplikasi melalui browser di `http://localhost:8000`.
+1. **Clone & Setup**:
+   ```bash
+   git clone https://github.com/612202300099-crypto/Sisfo-decode-2026.git
+   cd Sisfo-decode-2026
+   composer install
+   npm install
+   ```
+2. **Environment**:
+   Sesuaikan database di file `.env`, lalu jalankan:
+   ```bash
+   php artisan key:generate
+   php artisan migrate
+   ```
+3. **Run**:
+   ```bash
+   php artisan serve
+   ```
 
 ---
 
-## 🤝 Berkontribusi
-Project ini dikembangkan untuk kebutuhan manajemen akademik yang lebih baik. Jika Anda menemukan bug atau memiliki ide fitur baru, silakan buka **Issue** atau kirimkan **Pull Request**.
+## 📝 Penutup
+Proyek ini diharapkan dapat menjadi tolak ukur pemahaman materi bootcamp bagi mahasiswa Sistem Informasi Udinus Kediri. Mari kita terus belajar dan berinovasi!
 
----
-
-## 📝 Lisensi
-Didistribusikan di bawah lisensi MIT. Lihat `LICENSE` untuk informasi lebih lanjut.
-
----
-
-**Dibuat dengan ❤️ untuk Masa Depan Akademik Digital.**
+**Dibuat dengan ❤️ di Lab. Komputer Udinus Kediri.**
