@@ -39,7 +39,17 @@ Kelola data massal dengan mudah. Anda dapat mengekspor data ke format CSV atau m
 | ![Student Index](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/student_index.jpg) | ![Trash System](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/trash_system.jpg) |
 | *Pengelolaan profil mahasiswa yang rapi* | *Keamanan data dengan sistem restorasi* |
 
-*(Note: Pastikan Anda telah mengunggah gambar ke folder yang sesuai untuk menampilkan foto di atas)*
+| Menu Program Studi | Menu Mata Kuliah |
+| :---: | :---: |
+| ![Prodi Index](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/prodi_index.jpg) | ![Subject Index](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/subject_index.jpg) |
+| *Manajemen kurikulum & program studi* | *Daftar mata kuliah pendukung akademik* |
+
+| Form Tambah Data (Premium UI) | Form Edit Data |
+| :---: | :---: |
+| ![Create Form](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/create_form.jpg) | ![Edit Form](https://raw.githubusercontent.com/612202300099-crypto/Sisfo-decode-2026/main/public/assets/img/screenshots/edit_form.jpg) |
+| *Antarmuka penginputan yang bersih & modern* | *Kemudahan pembaruan data secara realtime* |
+
+*(Note: Silakan unggah foto screenshot ke folder `public/assets/img/screenshots/` dengan nama file di atas agar muncul di GitHub)*
 
 ---
 
